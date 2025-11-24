@@ -23,9 +23,9 @@ const Projects = () => {
       status: "Completed",
     },
     {
-      title: "Regional Bridge Construction",
+      title: "Local River Bridge",
       category: "Infrastructure",
-      description: "40-meter span bridge over major waterway",
+      description: "Small bridge construction over local river for community access",
       image: bridgeImage,
       status: "Completed",
     },
