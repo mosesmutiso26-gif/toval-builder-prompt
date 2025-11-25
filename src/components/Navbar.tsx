@@ -79,6 +79,12 @@ const Navbar = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
+                  <NavLink to="/procurement" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
+                    Procurement
+                  </NavLink>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
                   <NavLink to="/contact" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
                     Contact
                   </NavLink>
@@ -145,6 +151,13 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               Careers
+            </NavLink>
+            <NavLink
+              to="/procurement"
+              className="block px-4 py-2 text-sm hover:bg-accent rounded-md"
+              onClick={() => setIsOpen(false)}
+            >
+              Procurement
             </NavLink>
             <NavLink
               to="/contact"
