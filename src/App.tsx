@@ -11,6 +11,11 @@ import News from "./pages/News";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import Procurement from "./pages/Procurement";
+import Auth from "./pages/Auth";
+import AdminDashboard from "./pages/admin/Dashboard";
+import UserManagement from "./pages/admin/UserManagement";
+import CRMContacts from "./pages/admin/CRMContacts";
+import CRMLeads from "./pages/admin/CRMLeads";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +35,11 @@ const App = () => (
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/procurement" element={<Procurement />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/users" element={<UserManagement />} />
+          <Route path="/admin/contacts" element={<CRMContacts />} />
+          <Route path="/admin/leads" element={<CRMLeads />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
