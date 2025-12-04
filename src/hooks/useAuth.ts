@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { User, Session } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -7,6 +7,26 @@ export const useAuth = () => {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [adminLoading, setAdminLoading] = useState(true);
+
+  const checkAdminStatus = useCallback(async (userId: string) => {
+    setAdminLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", userId)
+        .eq("role", "admin")
+        .maybeSingle();
+
+      setIsAdmin(!!data && !error);
+    } catch (error) {
+      console.error("Error checking admin status:", error);
+      setIsAdmin(false);
+    } finally {
+      setAdminLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
     // Set up auth state listener
@@ -22,6 +42,7 @@ export const useAuth = () => {
           }, 0);
         } else {
           setIsAdmin(false);
+          setAdminLoading(false);
         }
         
         setLoading(false);
@@ -37,28 +58,15 @@ export const useAuth = () => {
         setTimeout(() => {
           checkAdminStatus(session.user.id);
         }, 0);
+      } else {
+        setAdminLoading(false);
       }
       
       setLoading(false);
     });
 
     return () => subscription.unsubscribe();
-  }, []);
-
-  const checkAdminStatus = async (userId: string) => {
-    try {
-      const { data, error } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", userId)
-        .eq("role", "admin")
-        .single();
-
-      setIsAdmin(!!data && !error);
-    } catch (error) {
-      setIsAdmin(false);
-    }
-  };
+  }, [checkAdminStatus]);
 
   const signOut = async () => {
     await supabase.auth.signOut();
@@ -70,7 +78,7 @@ export const useAuth = () => {
   return {
     user,
     session,
-    loading,
+    loading: loading || adminLoading,
     isAdmin,
     signOut,
   };
