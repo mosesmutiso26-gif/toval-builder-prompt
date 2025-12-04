@@ -10,6 +10,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Download, Calendar, FileText, Building2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import roadImage1 from "@/assets/project-road-1.jpg";
+import buildingOngoing1 from "@/assets/project-building-ongoing-1.jpg";
 
 const Procurement = () => {
   const { toast } = useToast();
@@ -84,21 +86,31 @@ const Procurement = () => {
     <div className="min-h-screen">
       <Navbar />
 
-      {/* Hero */}
-      <section className="bg-primary text-primary-foreground py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Procurement</h1>
-          <p className="text-xl opacity-90">Partner with us to build Kenya's future</p>
+      {/* Magazine-Style Hero */}
+      <section 
+        className="h-[50vh] bg-cover bg-center relative"
+        style={{ backgroundImage: `url(${roadImage1})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
+          <p className="text-primary-foreground/80 uppercase tracking-[0.3em] text-sm mb-4">Partner With Us</p>
+          <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-4">Procurement</h1>
+          <div className="w-24 h-1 bg-primary mb-4" />
+          <p className="text-xl text-primary-foreground/90">Partner with us to build Kenya's future</p>
         </div>
       </section>
 
-      {/* Active Tenders */}
-      <section className="py-16">
+      {/* Active Tenders - Magazine Style */}
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">Active Tenders</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="text-center mb-16">
+            <p className="text-primary uppercase tracking-[0.2em] text-sm mb-4">Current Opportunities</p>
+            <h2 className="text-4xl font-bold mb-4">Active Tenders</h2>
+            <div className="w-24 h-1 bg-primary mx-auto" />
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {activeTenders.map((tender, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
+              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                 <CardHeader>
                   <div className="flex justify-between items-start mb-2">
                     <CardTitle className="text-xl">{tender.title}</CardTitle>
@@ -137,15 +149,33 @@ const Procurement = () => {
         </div>
       </section>
 
-      {/* Supplier Registration */}
-      <section className="py-16 bg-accent">
+      {/* Full-Width Image Break */}
+      <section 
+        className="h-[40vh] bg-cover bg-center bg-fixed relative"
+        style={{ backgroundImage: `url(${buildingOngoing1})` }}
+      >
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center text-primary-foreground">
+            <p className="uppercase tracking-[0.3em] text-sm mb-4">Join Our Network</p>
+            <h2 className="text-4xl md:text-5xl font-bold">Become a Trusted Supplier</h2>
+          </div>
+        </div>
+      </section>
+
+      {/* Supplier Registration - Magazine Style */}
+      <section className="py-20 bg-accent">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-4">Supplier Registration</h2>
-            <p className="text-muted-foreground mb-8">
-              Register your company to receive notifications about upcoming tenders and opportunities.
-            </p>
-            <Card>
+            <div className="text-center mb-12">
+              <p className="text-primary uppercase tracking-[0.2em] text-sm mb-4">Join Us</p>
+              <h2 className="text-4xl font-bold mb-4">Supplier Registration</h2>
+              <div className="w-24 h-1 bg-primary mx-auto mb-6" />
+              <p className="text-muted-foreground">
+                Register your company to receive notifications about upcoming tenders and opportunities.
+              </p>
+            </div>
+            <Card className="border-0 shadow-xl">
               <CardHeader>
                 <CardTitle>Registration Form</CardTitle>
                 <CardDescription>
@@ -246,7 +276,7 @@ const Procurement = () => {
                     />
                   </div>
 
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" className="w-full" size="lg">
                     Submit Registration
                   </Button>
                 </form>
@@ -256,18 +286,22 @@ const Procurement = () => {
         </div>
       </section>
 
-      {/* Downloadable Documents */}
-      <section className="py-16">
+      {/* Downloadable Documents - Magazine Style */}
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">Procurement Documents</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-primary uppercase tracking-[0.2em] text-sm mb-4">Resources</p>
+            <h2 className="text-4xl font-bold mb-4">Procurement Documents</h2>
+            <div className="w-24 h-1 bg-primary mx-auto" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {documents.map((doc, index) => (
-              <Card key={index} className="hover:shadow-md transition-shadow">
+              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                 <CardContent className="flex items-center justify-between p-6">
                   <div className="flex items-center gap-4">
-                    <FileText className="h-10 w-10 text-primary" />
+                    <FileText className="h-12 w-12 text-primary" />
                     <div>
-                      <p className="font-semibold">{doc.name}</p>
+                      <p className="font-bold text-lg">{doc.name}</p>
                       <p className="text-sm text-muted-foreground">
                         {doc.type} • {doc.size}
                       </p>
@@ -283,41 +317,53 @@ const Procurement = () => {
         </div>
       </section>
 
-      {/* Procurement Guidelines */}
-      <section className="py-16 bg-accent">
+      {/* Procurement Guidelines - Magazine Style */}
+      <section className="py-20 bg-card">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8">Procurement Guidelines</h2>
-            <Card>
-              <CardContent className="p-6 space-y-4">
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Eligibility Requirements</h3>
-                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                    <li>Valid business registration certificate</li>
-                    <li>Tax compliance certificate</li>
-                    <li>Relevant industry certifications</li>
-                    <li>Proof of past experience in similar projects</li>
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <p className="text-primary uppercase tracking-[0.2em] text-sm mb-4">How It Works</p>
+              <h2 className="text-4xl font-bold mb-4">Procurement Guidelines</h2>
+              <div className="w-24 h-1 bg-primary mx-auto" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <Card className="border-0 shadow-lg">
+                <CardContent className="p-8">
+                  <span className="text-5xl font-bold text-primary/20">01</span>
+                  <h3 className="text-xl font-bold mt-4 mb-4">Eligibility Requirements</h3>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li>• Valid business registration</li>
+                    <li>• Tax compliance certificate</li>
+                    <li>• Industry certifications</li>
+                    <li>• Proof of experience</li>
                   </ul>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Tender Process</h3>
-                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                    <li>Download tender documents from our website</li>
-                    <li>Submit completed applications before deadline</li>
-                    <li>Attend mandatory site visits if required</li>
-                    <li>Await evaluation and notification</li>
+                </CardContent>
+              </Card>
+              <Card className="border-0 shadow-lg">
+                <CardContent className="p-8">
+                  <span className="text-5xl font-bold text-primary/20">02</span>
+                  <h3 className="text-xl font-bold mt-4 mb-4">Tender Process</h3>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li>• Download tender documents</li>
+                    <li>• Submit before deadline</li>
+                    <li>• Attend site visits</li>
+                    <li>• Await evaluation</li>
                   </ul>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Contact Procurement Office</h3>
-                  <p className="text-muted-foreground">
-                    For inquiries: <span className="font-semibold">procurement@toval.co.ke</span>
-                    <br />
-                    Phone: <span className="font-semibold">0700 325 637</span>
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+              <Card className="border-0 shadow-lg">
+                <CardContent className="p-8">
+                  <span className="text-5xl font-bold text-primary/20">03</span>
+                  <h3 className="text-xl font-bold mt-4 mb-4">Contact Us</h3>
+                  <div className="text-muted-foreground space-y-2">
+                    <p>Email:</p>
+                    <p className="font-semibold">procurement@toval.co.ke</p>
+                    <p className="mt-4">Phone:</p>
+                    <p className="font-semibold">0700 325 637</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
