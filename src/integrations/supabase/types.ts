@@ -14,6 +14,235 @@ export type Database = {
   }
   public: {
     Tables: {
+      cms_audit: {
+        Row: {
+          action: string | null
+          actor_id: string | null
+          after_snapshot: Json | null
+          before_snapshot: Json | null
+          created_at: string | null
+          id: number
+          target_id: number | null
+          target_table: string | null
+        }
+        Insert: {
+          action?: string | null
+          actor_id?: string | null
+          after_snapshot?: Json | null
+          before_snapshot?: Json | null
+          created_at?: string | null
+          id?: number
+          target_id?: number | null
+          target_table?: string | null
+        }
+        Update: {
+          action?: string | null
+          actor_id?: string | null
+          after_snapshot?: Json | null
+          before_snapshot?: Json | null
+          created_at?: string | null
+          id?: number
+          target_id?: number | null
+          target_table?: string | null
+        }
+        Relationships: []
+      }
+      cms_media: {
+        Row: {
+          duration_seconds: number | null
+          filename: string | null
+          height: number | null
+          id: number
+          metadata: Json | null
+          mime_type: string | null
+          original_filename: string | null
+          size_bytes: number | null
+          thumbnail_url: string | null
+          type: string | null
+          uploaded_at: string | null
+          uploaded_by: string | null
+          url: string | null
+          uuid: string | null
+          width: number | null
+        }
+        Insert: {
+          duration_seconds?: number | null
+          filename?: string | null
+          height?: number | null
+          id?: number
+          metadata?: Json | null
+          mime_type?: string | null
+          original_filename?: string | null
+          size_bytes?: number | null
+          thumbnail_url?: string | null
+          type?: string | null
+          uploaded_at?: string | null
+          uploaded_by?: string | null
+          url?: string | null
+          uuid?: string | null
+          width?: number | null
+        }
+        Update: {
+          duration_seconds?: number | null
+          filename?: string | null
+          height?: number | null
+          id?: number
+          metadata?: Json | null
+          mime_type?: string | null
+          original_filename?: string | null
+          size_bytes?: number | null
+          thumbnail_url?: string | null
+          type?: string | null
+          uploaded_at?: string | null
+          uploaded_by?: string | null
+          url?: string | null
+          uuid?: string | null
+          width?: number | null
+        }
+        Relationships: []
+      }
+      cms_pages: {
+        Row: {
+          content: Json | null
+          created_at: string | null
+          hero_media_id: number | null
+          id: number
+          page_key: string
+          title: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          content?: Json | null
+          created_at?: string | null
+          hero_media_id?: number | null
+          id?: number
+          page_key: string
+          title?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          content?: Json | null
+          created_at?: string | null
+          hero_media_id?: number | null
+          id?: number
+          page_key?: string
+          title?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cms_pages_hero_media_id_fkey"
+            columns: ["hero_media_id"]
+            isOneToOne: false
+            referencedRelation: "cms_media"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      cms_project_media: {
+        Row: {
+          caption: string | null
+          id: number
+          is_hero: boolean | null
+          media_id: number | null
+          media_order: number | null
+          project_id: number | null
+        }
+        Insert: {
+          caption?: string | null
+          id?: number
+          is_hero?: boolean | null
+          media_id?: number | null
+          media_order?: number | null
+          project_id?: number | null
+        }
+        Update: {
+          caption?: string | null
+          id?: number
+          is_hero?: boolean | null
+          media_id?: number | null
+          media_order?: number | null
+          project_id?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cms_project_media_media_id_fkey"
+            columns: ["media_id"]
+            isOneToOne: false
+            referencedRelation: "cms_media"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "cms_project_media_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "cms_projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      cms_projects: {
+        Row: {
+          budget: number | null
+          client_name: string | null
+          cover_media_id: number | null
+          created_at: string | null
+          created_by: string | null
+          detailed_content: string | null
+          end_date: string | null
+          id: number
+          location: string | null
+          project_slug: string | null
+          start_date: string | null
+          status: string | null
+          summary: string | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          budget?: number | null
+          client_name?: string | null
+          cover_media_id?: number | null
+          created_at?: string | null
+          created_by?: string | null
+          detailed_content?: string | null
+          end_date?: string | null
+          id?: number
+          location?: string | null
+          project_slug?: string | null
+          start_date?: string | null
+          status?: string | null
+          summary?: string | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          budget?: number | null
+          client_name?: string | null
+          cover_media_id?: number | null
+          created_at?: string | null
+          created_by?: string | null
+          detailed_content?: string | null
+          end_date?: string | null
+          id?: number
+          location?: string | null
+          project_slug?: string | null
+          start_date?: string | null
+          status?: string | null
+          summary?: string | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cms_projects_cover_media_id_fkey"
+            columns: ["cover_media_id"]
+            isOneToOne: false
+            referencedRelation: "cms_media"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       crm_contacts: {
         Row: {
           company: string | null
