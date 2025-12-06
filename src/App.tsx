@@ -16,6 +16,12 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import UserManagement from "./pages/admin/UserManagement";
 import CRMContacts from "./pages/admin/CRMContacts";
 import CRMLeads from "./pages/admin/CRMLeads";
+import CMSDashboard from "./pages/admin/CMSDashboard";
+import CMSMedia from "./pages/admin/CMSMedia";
+import CMSProjects from "./pages/admin/CMSProjects";
+import CMSProjectEdit from "./pages/admin/CMSProjectEdit";
+import CMSPages from "./pages/admin/CMSPages";
+import CMSPageEdit from "./pages/admin/CMSPageEdit";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +46,12 @@ const App = () => (
           <Route path="/admin/users" element={<UserManagement />} />
           <Route path="/admin/contacts" element={<CRMContacts />} />
           <Route path="/admin/leads" element={<CRMLeads />} />
+          <Route path="/admin/cms" element={<CMSDashboard />} />
+          <Route path="/admin/cms/media" element={<CMSMedia />} />
+          <Route path="/admin/cms/projects" element={<CMSProjects />} />
+          <Route path="/admin/cms/projects/:id" element={<CMSProjectEdit />} />
+          <Route path="/admin/cms/pages" element={<CMSPages />} />
+          <Route path="/admin/cms/pages/:pageKey" element={<CMSPageEdit />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
