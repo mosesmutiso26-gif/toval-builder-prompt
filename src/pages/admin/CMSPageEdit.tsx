@@ -163,7 +163,7 @@ const CMSPageEdit = () => {
 
   if (loading) {
     return (
-      <ProtectedRoute requiredRole="admin">
+      <ProtectedRoute requireAdmin>
         <div className="min-h-screen flex flex-col bg-background">
           <Navbar />
           <main className="flex-1 container mx-auto px-4 py-8">
@@ -176,7 +176,7 @@ const CMSPageEdit = () => {
   }
 
   return (
-    <ProtectedRoute requiredRole="admin">
+    <ProtectedRoute requireAdmin>
       <div className="min-h-screen flex flex-col bg-background">
         <Navbar />
         
