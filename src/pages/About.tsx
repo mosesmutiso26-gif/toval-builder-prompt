@@ -38,7 +38,7 @@ const About = () => {
               </div>
               <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  Toval Building and Construction Company is a leading civil engineering firm based in Kisumu, Kenya. We specialize in delivering comprehensive infrastructure solutions that meet the highest standards of quality, safety, and innovation.
+                  Toval Engineering Contractors is a leading civil engineering firm based in Kisumu, Kenya. We specialize in delivering comprehensive infrastructure solutions that meet the highest standards of quality, safety, and innovation.
                 </p>
                 <p>
                   With a strong commitment to professionalism and engineering excellence, we serve clients across Kenya, from government entities to private developers.

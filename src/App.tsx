@@ -22,6 +22,7 @@ import CMSProjects from "./pages/admin/CMSProjects";
 import CMSProjectEdit from "./pages/admin/CMSProjectEdit";
 import CMSPages from "./pages/admin/CMSPages";
 import CMSPageEdit from "./pages/admin/CMSPageEdit";
+import Install from "./pages/Install";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/procurement" element={<Procurement />} />
+          <Route path="/install" element={<Install />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/users" element={<UserManagement />} />
