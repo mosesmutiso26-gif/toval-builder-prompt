@@ -132,7 +132,7 @@ const Contact = () => {
                   <div className="text-center">
                     <MapPin className="h-16 w-16 text-primary mx-auto mb-4" />
                     <p className="text-xl font-bold">Kisumu, Kenya</p>
-                    <p className="text-muted-foreground">Toval Building and Construction Company</p>
+                    <p className="text-muted-foreground">Toval Engineering Contractors</p>
                   </div>
                 </div>
               </CardContent>

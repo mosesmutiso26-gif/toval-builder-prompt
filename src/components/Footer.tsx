@@ -1,5 +1,6 @@
-import { Building2, Phone, Mail, MapPin } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -9,11 +10,11 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <Building2 className="h-6 w-6 text-primary" />
-              <span className="text-xl font-bold">TOVAL</span>
+              <img src={logo} alt="Toval Engineering Contractors" className="h-12 w-auto" />
             </div>
-            <p className="text-sm opacity-90">
-              Engineering the Future of Kenya's Infrastructure
+            <p className="font-semibold text-lg">Toval Engineering Contractors</p>
+            <p className="text-sm opacity-90 mt-2">
+              Improving Your Built Environment
             </p>
           </div>
 
@@ -75,7 +76,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-secondary-foreground/20 mt-8 pt-8 text-sm text-center space-y-2">
-          <p>© {new Date().getFullYear()} Toval Building and Construction Company. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Toval Engineering Contractors. All rights reserved.</p>
           <p className="text-xs opacity-75">
             Website Developed by <span className="font-semibold">Laban Panda Khisa</span> and <span className="font-semibold">Javan Illa</span>
           </p>

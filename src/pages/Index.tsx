@@ -87,11 +87,11 @@ const Index = () => {
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
             <p className="text-primary-foreground/80 uppercase tracking-[0.3em] text-sm mb-4">Kisumu, Kenya</p>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 leading-tight max-w-5xl">
-              Engineering the Future of Kenya's Infrastructure
+              Improving Your Built Environment
             </h1>
             <div className="w-24 h-1 bg-primary mb-6" />
             <p className="text-lg md:text-xl text-primary-foreground/90 max-w-2xl mb-8 leading-relaxed">
-              Toval Building and Construction Company delivers durable, safe, and innovative infrastructure solutions across Kenya.
+              Toval Engineering Contractors delivers durable, safe, and innovative infrastructure solutions across Kenya.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" asChild>
@@ -134,7 +134,7 @@ const Index = () => {
               <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Building Kenya's Tomorrow, Today</h2>
               <div className="w-16 h-1 bg-primary mb-6" />
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Toval Building and Construction Company, led by Eng. Tom Illa, provides engineering, building, and construction solutions with a strong commitment to quality, safety, and client satisfaction.
+                Toval Engineering Contractors, led by Eng. Tom Illa, provides engineering, building, and construction solutions with a strong commitment to quality, safety, and client satisfaction.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
                 Based in Kisumu, we serve clients across Kenya with professional excellence in every project we undertake.
