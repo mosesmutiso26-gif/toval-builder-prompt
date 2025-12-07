@@ -157,7 +157,7 @@ const CMSProjects = () => {
   };
 
   return (
-    <ProtectedRoute requiredRole="admin">
+    <ProtectedRoute requireAdmin>
       <div className="min-h-screen flex flex-col bg-background">
         <Navbar />
         
