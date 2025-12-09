@@ -1,4 +1,4 @@
-import { Phone, MapPin } from "lucide-react";
+import { Phone, MapPin, Mail } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import logo from "@/assets/logo.png";
 
@@ -70,6 +70,12 @@ const Footer = () => {
                   0700 325 637
                 </a>
               </li>
+              <li className="flex items-center gap-2">
+                <Mail className="h-4 w-4 flex-shrink-0" />
+                <a href="mailto:info@toval-eng.co.ke" className="hover:text-primary transition-colors">
+                  info@toval-eng.co.ke
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -78,7 +84,7 @@ const Footer = () => {
         <div className="border-t border-secondary-foreground/20 mt-8 pt-8 text-sm text-center space-y-2">
           <p>© {new Date().getFullYear()} Toval Engineering Contractors. All rights reserved.</p>
           <p className="text-xs opacity-75">
-            Website Developed by <span className="font-semibold">Laban Panda Khisa</span> and <span className="font-semibold">Javan Illa</span>
+            Website Developed by <span className="font-semibold text-destructive">Laban Panda Khisa</span> and <span className="font-semibold text-destructive">Javan Illa</span>
           </p>
         </div>
       </div>

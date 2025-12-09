@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { NavLink } from "@/components/NavLink";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown, User, LogOut, UserCog } from "lucide-react";
+import { Menu, X, ChevronDown, User, LogOut, UserCog, Download } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
+import { usePWAInstall } from "@/hooks/usePWAInstall";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,6 +25,7 @@ import logo from "@/assets/logo.png";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, isAdmin, signOut } = useAuth();
+  const { isInstallable, installApp } = usePWAInstall();
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
@@ -103,6 +105,13 @@ const Navbar = () => {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
+
+            {isInstallable && (
+              <Button variant="outline" size="sm" className="ml-4" onClick={installApp}>
+                <Download className="h-4 w-4 mr-2" />
+                Install App
+              </Button>
+            )}
 
             <Button variant="default" size="sm" className="ml-4" asChild>
               <a href="tel:0700325637">Call: 0700 325 637</a>
