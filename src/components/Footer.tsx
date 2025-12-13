@@ -84,7 +84,7 @@ const Footer = () => {
         <div className="border-t border-secondary-foreground/20 mt-8 pt-8 text-sm text-center space-y-2">
           <p>© {new Date().getFullYear()} Toval Engineering Contractors. All rights reserved.</p>
           <p className="text-xs opacity-75">
-            Website Developed by <span className="font-semibold text-destructive">Laban Panda Khisa</span> and <span className="font-semibold text-destructive">Javan Illa</span>
+            Website Developed by <span className="font-bold text-primary">Laban Panda Khisa</span> and <span className="font-bold text-primary">Javan Illa</span>
           </p>
         </div>
       </div>

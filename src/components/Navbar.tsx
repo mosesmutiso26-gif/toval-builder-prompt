@@ -81,6 +81,12 @@ const Navbar = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
+                  <NavLink to="/gallery" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
+                    Gallery
+                  </NavLink>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
                   <NavLink to="/news" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
                     News & Media
                   </NavLink>
@@ -194,6 +200,13 @@ const Navbar = () => {
               Projects
             </NavLink>
             <NavLink
+              to="/gallery"
+              className="block px-4 py-2 text-sm hover:bg-accent rounded-md"
+              onClick={() => setIsOpen(false)}
+            >
+              Gallery
+            </NavLink>
+            <NavLink
               to="/news"
               className="block px-4 py-2 text-sm hover:bg-accent rounded-md"
               onClick={() => setIsOpen(false)}
@@ -260,10 +273,10 @@ const Navbar = () => {
                 Sign Out
               </Button>
             ) : (
-              <Button variant="outline" size="sm" className="w-full mt-2" asChild>
+              <Button variant="default" size="sm" className="w-full mt-2" asChild>
                 <NavLink to="/auth" onClick={() => setIsOpen(false)}>
                   <User className="h-4 w-4 mr-2" />
-                  Login
+                  Sign In / Register
                 </NavLink>
               </Button>
             )}

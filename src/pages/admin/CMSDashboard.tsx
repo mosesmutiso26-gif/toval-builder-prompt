@@ -14,7 +14,8 @@ import {
   Activity,
   Plus,
   Upload,
-  Edit
+  Edit,
+  ShoppingCart
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -84,6 +85,7 @@ const CMSDashboard = () => {
     { label: "Media Library", icon: Image, href: "/admin/cms/media", count: stats.totalMedia, description: "Manage images and videos" },
     { label: "Projects", icon: FolderOpen, href: "/admin/cms/projects", count: stats.totalProjects, description: "Manage project content" },
     { label: "Pages", icon: FileText, href: "/admin/cms/pages", count: stats.totalPages, description: "Edit website pages" },
+    { label: "Procurement", icon: ShoppingCart, href: "/admin/cms/procurement", count: null, description: "Manage tenders & documents" },
     { label: "Users", icon: Users, href: "/admin/users", count: null, description: "Manage user roles" }
   ];
 
