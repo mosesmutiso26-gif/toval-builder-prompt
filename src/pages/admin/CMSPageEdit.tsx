@@ -13,6 +13,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, Save, Eye, ChevronDown, ChevronUp, Plus, Trash2 } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import MediaPicker from "@/components/MediaPicker";
 
 const CMSPageEdit = () => {
   const { pageKey } = useParams();
@@ -189,6 +190,21 @@ const CMSPageEdit = () => {
     );
   };
 
+  const renderImageField = (path: string, label: string) => {
+    const keys = path.split(".");
+    let value: any = content;
+    for (const key of keys) {
+      value = value?.[key];
+    }
+    const imageUrl = typeof value === 'string' ? value : '';
+    return (
+      <div className="space-y-2">
+        <Label>{label}</Label>
+        <MediaPicker value={imageUrl} onChange={(url) => updateField(path, url)} label={`Select ${label}`} />
+      </div>
+    );
+  };
+
   const renderArrayEditor = (arrayPath: string, label: string, fields: string[], template: Record<string, string>) => {
     const keys = arrayPath.split(".");
     let items: any = content;
@@ -284,6 +300,7 @@ const CMSPageEdit = () => {
               <>
                 {renderSection("hero", "Hero Section", (
                   <>
+                    {renderImageField("hero.image", "Hero Background Image")}
                     <div className="grid grid-cols-2 gap-4">
                       {renderTextField("hero.location", "Location")}
                       {renderTextField("hero.title", "Title")}
@@ -312,10 +329,13 @@ const CMSPageEdit = () => {
                   </>
                 ))}
                 {renderSection("imageBreak", "Image Break", (
-                  <div className="grid grid-cols-2 gap-4">
-                    {renderTextField("imageBreak.label", "Label")}
-                    {renderTextField("imageBreak.title", "Title")}
-                  </div>
+                  <>
+                    {renderImageField("imageBreak.image", "Background Image")}
+                    <div className="grid grid-cols-2 gap-4">
+                      {renderTextField("imageBreak.label", "Label")}
+                      {renderTextField("imageBreak.title", "Title")}
+                    </div>
+                  </>
                 ))}
                 {renderSection("cta", "Call to Action", (
                   <>
@@ -338,6 +358,7 @@ const CMSPageEdit = () => {
               <>
                 {renderSection("hero", "Hero Section", (
                   <>
+                    {renderImageField("hero.image", "Hero Background Image")}
                     {renderTextField("hero.label", "Label")}
                     {renderTextField("hero.title", "Title")}
                     {renderTextField("hero.subtitle", "Subtitle", true)}
@@ -352,10 +373,13 @@ const CMSPageEdit = () => {
                   </>
                 ))}
                 {renderSection("imageBreak", "Image Break", (
-                  <div className="grid grid-cols-2 gap-4">
-                    {renderTextField("imageBreak.label", "Label")}
-                    {renderTextField("imageBreak.title", "Title")}
-                  </div>
+                  <>
+                    {renderImageField("imageBreak.image", "Background Image")}
+                    <div className="grid grid-cols-2 gap-4">
+                      {renderTextField("imageBreak.label", "Label")}
+                      {renderTextField("imageBreak.title", "Title")}
+                    </div>
+                  </>
                 ))}
                 {renderSection("buildingConstruction", "Building Construction", (
                   <>

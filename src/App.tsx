@@ -11,6 +11,7 @@ import News from "./pages/News";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import Procurement from "./pages/Procurement";
+import Gallery from "./pages/Gallery";
 import Auth from "./pages/Auth";
 import AdminDashboard from "./pages/admin/Dashboard";
 import UserManagement from "./pages/admin/UserManagement";
@@ -22,6 +23,7 @@ import CMSProjects from "./pages/admin/CMSProjects";
 import CMSProjectEdit from "./pages/admin/CMSProjectEdit";
 import CMSPages from "./pages/admin/CMSPages";
 import CMSPageEdit from "./pages/admin/CMSPageEdit";
+import CMSProcurement from "./pages/admin/CMSProcurement";
 import Install from "./pages/Install";
 import NotFound from "./pages/NotFound";
 import FloatingEngineer from "./components/FloatingEngineer";
@@ -42,6 +44,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/news" element={<News />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
@@ -58,6 +61,7 @@ const App = () => (
           <Route path="/admin/cms/projects/:id" element={<CMSProjectEdit />} />
           <Route path="/admin/cms/pages" element={<CMSPages />} />
           <Route path="/admin/cms/pages/:pageKey" element={<CMSPageEdit />} />
+          <Route path="/admin/cms/procurement" element={<CMSProcurement />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
