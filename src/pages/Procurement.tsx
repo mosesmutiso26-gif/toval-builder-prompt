@@ -10,11 +10,15 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Download, Calendar, FileText, Building2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useCMSPage } from "@/hooks/useCMSPage";
+import { Skeleton } from "@/components/ui/skeleton";
 import roadImage1 from "@/assets/project-road-1.jpg";
 import buildingOngoing1 from "@/assets/project-building-ongoing-1.jpg";
 
 const Procurement = () => {
   const { toast } = useToast();
+  const { loading, getContent } = useCMSPage("procurement");
+  
   const [formData, setFormData] = useState({
     companyName: "",
     registrationNumber: "",
@@ -25,6 +29,13 @@ const Procurement = () => {
     experience: "",
     message: "",
   });
+
+  const hero = getContent("hero", { label: "Partner With Us", title: "Procurement", subtitle: "Partner with us to build Kenya's future" });
+  const tenders = getContent("tenders", { label: "Current Opportunities", title: "Active Tenders" });
+  const imageBreak = getContent("imageBreak", { label: "Join Our Network", title: "Become a Trusted Supplier" });
+  const registration = getContent("registration", { label: "Join Us", title: "Supplier Registration", description: "Register your company to receive notifications about upcoming tenders and opportunities." });
+  const documents = getContent("documents", { label: "Resources", title: "Procurement Documents" });
+  const guidelines = getContent("guidelines", { label: "How It Works", title: "Procurement Guidelines" });
 
   const activeTenders = [
     {
@@ -53,7 +64,7 @@ const Procurement = () => {
     },
   ];
 
-  const documents = [
+  const documentsList = [
     { name: "Supplier Registration Form", type: "PDF", size: "245 KB" },
     { name: "Tender Application Guidelines", type: "PDF", size: "1.2 MB" },
     { name: "Company Profile Template", type: "DOCX", size: "180 KB" },
@@ -82,6 +93,19 @@ const Procurement = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen">
+        <Navbar />
+        <Skeleton className="h-[50vh] w-full" />
+        <div className="container mx-auto px-4 py-20">
+          <Skeleton className="h-96" />
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -93,10 +117,10 @@ const Procurement = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
-          <p className="text-primary-foreground/80 uppercase tracking-[0.3em] text-sm mb-4">Partner With Us</p>
-          <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-4">Procurement</h1>
+          <p className="text-primary-foreground/80 uppercase tracking-[0.3em] text-sm mb-4">{hero.label}</p>
+          <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-4">{hero.title}</h1>
           <div className="w-24 h-1 bg-primary mb-4" />
-          <p className="text-xl text-primary-foreground/90">Partner with us to build Kenya's future</p>
+          <p className="text-xl text-primary-foreground/90">{hero.subtitle}</p>
         </div>
       </section>
 
@@ -104,8 +128,8 @@ const Procurement = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <p className="text-primary uppercase tracking-[0.2em] text-sm mb-4">Current Opportunities</p>
-            <h2 className="text-4xl font-bold mb-4">Active Tenders</h2>
+            <p className="text-primary uppercase tracking-[0.2em] text-sm mb-4">{tenders.label}</p>
+            <h2 className="text-4xl font-bold mb-4">{tenders.title}</h2>
             <div className="w-24 h-1 bg-primary mx-auto" />
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -157,8 +181,8 @@ const Procurement = () => {
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-primary-foreground">
-            <p className="uppercase tracking-[0.3em] text-sm mb-4">Join Our Network</p>
-            <h2 className="text-4xl md:text-5xl font-bold">Become a Trusted Supplier</h2>
+            <p className="uppercase tracking-[0.3em] text-sm mb-4">{imageBreak.label}</p>
+            <h2 className="text-4xl md:text-5xl font-bold">{imageBreak.title}</h2>
           </div>
         </div>
       </section>
@@ -168,12 +192,10 @@ const Procurement = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <p className="text-primary uppercase tracking-[0.2em] text-sm mb-4">Join Us</p>
-              <h2 className="text-4xl font-bold mb-4">Supplier Registration</h2>
+              <p className="text-primary uppercase tracking-[0.2em] text-sm mb-4">{registration.label}</p>
+              <h2 className="text-4xl font-bold mb-4">{registration.title}</h2>
               <div className="w-24 h-1 bg-primary mx-auto mb-6" />
-              <p className="text-muted-foreground">
-                Register your company to receive notifications about upcoming tenders and opportunities.
-              </p>
+              <p className="text-muted-foreground">{registration.description}</p>
             </div>
             <Card className="border-0 shadow-xl">
               <CardHeader>
@@ -290,12 +312,12 @@ const Procurement = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <p className="text-primary uppercase tracking-[0.2em] text-sm mb-4">Resources</p>
-            <h2 className="text-4xl font-bold mb-4">Procurement Documents</h2>
+            <p className="text-primary uppercase tracking-[0.2em] text-sm mb-4">{documents.label}</p>
+            <h2 className="text-4xl font-bold mb-4">{documents.title}</h2>
             <div className="w-24 h-1 bg-primary mx-auto" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {documents.map((doc, index) => (
+            {documentsList.map((doc, index) => (
               <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                 <CardContent className="flex items-center justify-between p-6">
                   <div className="flex items-center gap-4">
@@ -322,8 +344,8 @@ const Procurement = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <p className="text-primary uppercase tracking-[0.2em] text-sm mb-4">How It Works</p>
-              <h2 className="text-4xl font-bold mb-4">Procurement Guidelines</h2>
+              <p className="text-primary uppercase tracking-[0.2em] text-sm mb-4">{guidelines.label}</p>
+              <h2 className="text-4xl font-bold mb-4">{guidelines.title}</h2>
               <div className="w-24 h-1 bg-primary mx-auto" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -357,7 +379,7 @@ const Procurement = () => {
                   <h3 className="text-xl font-bold mt-4 mb-4">Contact Us</h3>
                   <div className="text-muted-foreground space-y-2">
                     <p>Email:</p>
-                    <p className="font-semibold">procurement@toval.co.ke</p>
+                    <p className="font-semibold">info@toval-eng.co.ke</p>
                     <p className="mt-4">Phone:</p>
                     <p className="font-semibold">0700 325 637</p>
                   </div>
