@@ -24,6 +24,8 @@ import CMSPages from "./pages/admin/CMSPages";
 import CMSPageEdit from "./pages/admin/CMSPageEdit";
 import Install from "./pages/Install";
 import NotFound from "./pages/NotFound";
+import FloatingEngineer from "./components/FloatingEngineer";
+import MobileInstallPrompt from "./components/MobileInstallPrompt";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +35,8 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <FloatingEngineer />
+        <MobileInstallPrompt />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />

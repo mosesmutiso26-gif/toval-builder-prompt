@@ -221,9 +221,52 @@ const Navbar = () => {
             >
               Contact
             </NavLink>
+
+            {/* Mobile Install Button */}
+            {isInstallable && (
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="w-full mt-2" 
+                onClick={() => { installApp(); setIsOpen(false); }}
+              >
+                <Download className="h-4 w-4 mr-2" />
+                Install App
+              </Button>
+            )}
+
+            {/* Mobile Admin Button */}
+            {isAdmin && (
+              <Button variant="outline" size="sm" className="w-full mt-2" asChild>
+                <NavLink to="/admin" onClick={() => setIsOpen(false)}>
+                  <UserCog className="h-4 w-4 mr-2" />
+                  Admin Dashboard
+                </NavLink>
+              </Button>
+            )}
+
             <Button variant="default" size="sm" className="w-full mt-4" asChild>
               <a href="tel:0700325637">Call: 0700 325 637</a>
             </Button>
+
+            {user ? (
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="w-full mt-2" 
+                onClick={() => { signOut(); setIsOpen(false); }}
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                Sign Out
+              </Button>
+            ) : (
+              <Button variant="outline" size="sm" className="w-full mt-2" asChild>
+                <NavLink to="/auth" onClick={() => setIsOpen(false)}>
+                  <User className="h-4 w-4 mr-2" />
+                  Login
+                </NavLink>
+              </Button>
+            )}
           </div>
         )}
       </div>
